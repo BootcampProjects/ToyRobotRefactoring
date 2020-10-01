@@ -1,7 +1,8 @@
 package com.trendyol.toyrobot.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RoverTest {
 
@@ -70,7 +71,7 @@ public class RoverTest {
     }
 
     @Test
-    public void should_turn_right_when_compass_is_north () {
+    public void should_turn_right_when_compass_is_north() {
         Rover rover = createNorthRover();
         rover.turnRight();
         assertEquals(Compass.EAST, rover.getCompass());
@@ -91,22 +92,22 @@ public class RoverTest {
     }
 
     @Test
-    public void should_turn_right_when_compass_is_west () {
+    public void should_turn_right_when_compass_is_west() {
         Rover rover = createWestRover();
         rover.turnRight();
         assertEquals(Compass.NORTH, rover.getCompass());
     }
 
     private Rover createWestRover() {
-        return new Rover(0, 0, Compass.WEST);
+        return new Rover(0, 0, new West());
     }
 
     private Rover createSouthRover() {
-        return new Rover(0, 0, Compass.SOUTH);
+        return new Rover(0, 0, new South());
     }
 
     private Rover createEastRover() {
-        return new Rover(0, 0, Compass.EAST);
+        return new Rover(0, 0, new East());
     }
 
     private Rover createNorthRover() {
