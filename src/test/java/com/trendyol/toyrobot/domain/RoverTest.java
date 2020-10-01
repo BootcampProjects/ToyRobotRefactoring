@@ -98,6 +98,21 @@ public class RoverTest {
         assertEquals(Compass.NORTH, rover.getCompass());
     }
 
+    @Test
+    public void should_add_materials_when_change_location() {
+        Rover rover = createNorthRover();
+        rover.turnRight();
+        rover.turnRight();
+        rover.turnLeft();
+        rover.move();
+
+        assertEquals(Compass.EAST, rover.getCompass());
+        assertEquals(5, rover.getMaterial().size());
+        assertEquals("Material-NoArg", rover.getMaterial().get(0).getName());
+        assertEquals("SOUTH", rover.getMaterial().get(2).getName());
+        assertEquals("EAST", rover.getMaterial().get(4).getName());
+    }
+
     private Rover createWestRover() {
         return new Rover(0, 0, new West());
     }
